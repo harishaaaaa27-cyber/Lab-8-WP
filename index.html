@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>User Information Form</h1>
+
+    <form id="userForm">
+
+        <label>Name:</label>
+        <input type="text" id="name" required>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+
+        <label>Mobile Number:</label>
+        <input type="tel" id="mobile" required>
+
+        <label>Email ID:</label>
+        <input type="email" id="email" required>
+
+        <label>City:</label>
+        <input type="text" id="city" required>
+
+        <label>State:</label>
+        <input type="text" id="state" required>
+
+        <label>Country:</label>
+        <select id="country" required>
+            <option value="">Select Country</option>
+            <option>India</option>
+            <option>USA</option>
+            <option>Japan</option>
+            <option>Australia</option>
+            <option>France</option>
+        </select>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <script>
+        document.getElementById("userForm").onsubmit = function(e) {
+            e.preventDefault();
+
+            let user = {
+                name: document.getElementById("name").value,
+                gender: document.querySelector('input[name="gender"]:checked')?.value || "",
+                mobile: document.getElementById("mobile").value,
+                email: document.getElementById("email").value,
+                city: document.getElementById("city").value,
+                state: document.getElementById("state").value,
+                country: document.getElementById("country").value
+            };
+
+            localStorage.setItem("userData", JSON.stringify(user));
+            window.location.href = "display.html";
+        };
+    </script>
+
+</body>
+</html>
