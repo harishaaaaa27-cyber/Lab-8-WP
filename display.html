@@ -1,28 +1,91 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>User Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted User Details</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 30px 15px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fce4ec, #e8eaf6, #f3e5f5);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 12px 35px rgba(120, 90, 150, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #654a7d;
+        }
+
+        .details {
+            margin-top: 25px;
+            padding: 20px;
+            background: #faf7ff;
+            border-radius: 15px;
+        }
+
+        .details p {
+            padding: 12px;
+            margin: 8px 0;
+            background: #f3e5f5;
+            border-radius: 8px;
+            color: #654a7d;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            padding: 13px;
+            background: #d8b4e2;
+            color: #49365f;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+    </style>
 </head>
+
 <body>
 
-    <h2>Submitted User Details</h2>
+    <div class="container">
 
-    <div id="details"></div>
+        <h1>Submitted User Details</h1>
+
+        <div class="details" id="details"></div>
+
+        <a href="index.html">← Back to Form</a>
+
+    </div>
 
     <script>
         let user = JSON.parse(localStorage.getItem("userData"));
 
         if (user) {
             document.getElementById("details").innerHTML = `
-                <p>Name: ${user.name}</p>
-                <p>Gender: ${user.gender}</p>
-                <p>Mobile: ${user.mobile}</p>
-                <p>Email: ${user.email}</p>
-                <p>City: ${user.city}</p>
-                <p>State: ${user.state}</p>
-                <p>Country: ${user.country}</p>
+                <p><strong>Name:</strong> ${user.name}</p>
+                <p><strong>Gender:</strong> ${user.gender}</p>
+                <p><strong>Mobile:</strong> ${user.mobile}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>City:</strong> ${user.city}</p>
+                <p><strong>State:</strong> ${user.state}</p>
+                <p><strong>Country:</strong> ${user.country}</p>
             `;
+        } else {
+            document.getElementById("details").innerHTML =
+                "<p>No user details found. Please fill in the form.</p>";
         }
     </script>
 

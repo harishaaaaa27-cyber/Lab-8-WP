@@ -1,49 +1,73 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Information Form</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>User Information Form</h1>
+    <div class="container">
 
-    <form id="userForm">
+        <header>
+            <p class="tagline">YOUR DETAILS</p>
+            <h1>User Information Form</h1>
+            <p class="subtitle">Please fill in your information below</p>
+        </header>
 
-        <label>Name:</label>
-        <input type="text" id="name" required>
+        <form id="userForm">
 
-        <label>Gender:</label>
-        <input type="radio" name="gender" value="Male"> Male
-        <input type="radio" name="gender" value="Female"> Female
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
 
-        <label>Mobile Number:</label>
-        <input type="tel" id="mobile" required>
+            <label>Gender</label>
+            <div class="gender">
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="Male" required>
+                    Male
+                </label>
 
-        <label>Email ID:</label>
-        <input type="email" id="email" required>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="Female">
+                    Female
+                </label>
+            </div>
 
-        <label>City:</label>
-        <input type="text" id="city" required>
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" placeholder="Enter mobile number" required>
 
-        <label>State:</label>
-        <input type="text" id="state" required>
+            <label for="email">Email ID</label>
+            <input type="email" id="email" placeholder="Enter email address" required>
 
-        <label>Country:</label>
-        <select id="country" required>
-            <option value="">Select Country</option>
-            <option>India</option>
-            <option>USA</option>
-            <option>Japan</option>
-            <option>Australia</option>
-            <option>France</option>
-        </select>
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Enter your city" required>
 
-        <button type="submit">Submit</button>
+            <label for="state">State</label>
+            <input type="text" id="state" placeholder="Enter your state" required>
 
-    </form>
+            <label for="country">Country</label>
+            <select id="country" required>
+                <option value="">Select Country</option>
+                <option>India</option>
+                <option>USA</option>
+                <option>Japan</option>
+                <option>Australia</option>
+                <option>France</option>
+            </select>
+
+            <button type="submit">Submit Details →</button>
+
+        </form>
+
+        <footer>
+            <p>Fill in your details • Submit • View your information</p>
+        </footer>
+
+    </div>
 
     <script>
         document.getElementById("userForm").onsubmit = function(e) {
@@ -51,7 +75,7 @@
 
             let user = {
                 name: document.getElementById("name").value,
-                gender: document.querySelector('input[name="gender"]:checked')?.value || "",
+                gender: document.querySelector('input[name="gender"]:checked').value,
                 mobile: document.getElementById("mobile").value,
                 email: document.getElementById("email").value,
                 city: document.getElementById("city").value,
@@ -60,6 +84,7 @@
             };
 
             localStorage.setItem("userData", JSON.stringify(user));
+
             window.location.href = "display.html";
         };
     </script>
